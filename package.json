@@ -1,7 +1,7 @@
 {
   "name": "dataloader-results",
-  "version": "1.0.0",
-  "description": "helper for dataloader useful to return compliant results",
+  "version": "1.0.1",
+  "description": "helpers for dataloader useful to return compliant results",
   "main": "index.js",
   "scripts": {
     "test": "jest",

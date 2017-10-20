@@ -1,11 +1,17 @@
-# Dataloader-results
+# dataloader-results
 
 High order functions for [dataloader](https://github.com/facebook/dataloader). It is useful to return compliant results (ordered and same length as ids array)
 
 - Promise aware
 - Only vanilla js and optimized
 
-# Example
+## Install
+
+```sh
+npm i -S dataloader-results
+```
+
+## Example
 
 ```js
 
