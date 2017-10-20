@@ -59,8 +59,17 @@ describe('dataloader-results', () => {
 
   it('specific resolver', () => {
     const ids = ['foo', 'bar', 'baz', 'hi'];
-    expect(order(ids, expected, r => r.data)).toEqual(expected);
+    expect(order(ids, expected, { indexer: r => r.data })).toEqual(expected);
   });
+
+  it('specific idGetter', () => {
+    const ids = [{ id: 'foo' }, { id: 'bar' }, { id: 'baz' }, { id: 'hi' }];
+    expect(order(ids, expected, {
+      indexer: r => r.data,
+      idGetter: id => id.id,
+    })).toEqual(expected);
+  });
+
 
   it('orderedResults with promise', () => {
     const fetcher = () => Promise.resolve(expected);

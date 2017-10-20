@@ -40,12 +40,22 @@ Promise.all([
 ```js
 orderedResults(
   batchFetcher: (ids: a[]) => r[],
-  optionalIndexer: r => a,
+  options?: {
+    indexer: r => a,
+    idGetter: a => b,
+  }
 ): (ids: a[]) => r[]
 ```
 
 Accept a function (batchFetcher) that fetch synchronuously or asynchronuously data using ids array.
 
+It returns an array of results with same length as ids array (a[]).
+
 `orderedResults()` orders results returned by batchFetcher and if a result is missing, it returns null instead of nothing.
 
-`optionalIndexer` is used to index result array returned by `batchFetcher`. Return value type must be the same as array of ids. Default indexer is defined to `r => r.id`;
+`options` is optional. It can used to define custom indexer and custom idGetter
+
+`options.indexer` is used to index result array returned by `batchFetcher`. Return value type must be the same as array of ids. Default indexer is defined to `r => r.id`;
+
+`options.idGetter` is used to transform index when creating result array. Default idGetter is
+defined to `id => id`. This parameter is useful when `a` is an object and not an `number` or `string`
